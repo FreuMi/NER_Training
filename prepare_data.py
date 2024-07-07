@@ -27,7 +27,7 @@ property_time = ["time", "times"]
 property_mass = ["mass", "weight", "weights", "weighs"]
 property_temperature = ["temp", "temps", "temperature", "temperatures"]
 property_percent = []
-property_length = ["length"]
+property_length = ["distance", "length"]
 
 # Generate Array
 unit_long_arr = unit_long_arr_frequency + unit_long_arr_time + unit_long_arr_mass + unit_long_arr_temperature + unit_long_arr_percent + unit_long_arr_length
