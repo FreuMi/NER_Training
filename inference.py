@@ -3,8 +3,6 @@ import re
 
 nlp = spacy.load("./output/model-best")
 
-test_sentence = "Vibration (KHz) - normal 1 kHz, +/- 2%"
-
 
 wikidata_base = "https://www.wikidata.org/wiki/"
 qudt_base = "https://qudt.org/vocab/unit/"
@@ -57,35 +55,24 @@ nel_base = [
 def perform_nel_unit_short(item):
     for nel_arr in nel_base:
         if nel_arr["short_unit"] == item:
-            print("=====")
-            print("FOUND:")
-            print(f"short_unit: {nel_arr['short_unit']}, long_unit: {nel_arr['long_unit']}, qudt_id: {nel_arr['qudt_id']}, observerd_property: {nel_arr['observerd_property']}, wikidata_id: {nel_arr['wikidata_id']}")
-            print("=====")
 
-            break
+            return nel_arr
 
 
 def perform_nel_unit_long(item):
     for nel_arr in nel_base:
         if nel_arr["long_unit"] == item:
-            print("=====")
-            print("FOUND:")
-            print(f"short_unit: {nel_arr['short_unit']}, long_unit: {nel_arr['long_unit']}, qudt_id: {nel_arr['qudt_id']}, observerd_property: {nel_arr['observerd_property']}, wikidata_id: {nel_arr['wikidata_id']}")
-            print("=====")
 
-            break
+            return nel_arr
 
 
 def perform_nel_property(item):
     # Assumes base unit, works if base unit is first entry in nel_base
     for nel_arr in nel_base:
-        if nel_arr["observerd_property"] == item:
-            print("=====")
-            print("FOUND:")
-            print(f"short_unit: {nel_arr['short_unit']}, long_unit: {nel_arr['long_unit']}, qudt_id: {nel_arr['qudt_id']}, observerd_property: {nel_arr['observerd_property']}, wikidata_id: {nel_arr['wikidata_id']}")
-            print("=====")
-
-            break
+        properties = nel_arr["observerd_property"]
+        for prop in properties:
+            if prop == item:
+                return nel_arr
 
 def remove_trailing_s(item):
     # Remove trailing s
@@ -98,17 +85,77 @@ def clear_number(item):
     return re.sub(pattern, '', item)
 
 
-doc = nlp(test_sentence)
-for ent in doc.ents:
+def filter_percent(found_elements, found_elements_labels):
+    # Remove % if more then one unit is found
+    filtered_elements = []
+    filtered_elements_labels = []
+    for i in range(len(found_elements)):
+        element = found_elements[i]
+        element_label = found_elements_labels[i]
+        
+        if element["short_unit"] != "%":
+            filtered_elements.append(element)
+            filtered_elements_labels.append(element_label)
+    
+    return filtered_elements, filtered_elements_labels
 
-    if ent.label_ == "UNIT_SHORT":
-        unit = clear_number(ent.text)
-        perform_nel_unit_short(unit)
 
-    elif ent.label_ == "UNIT_LONG":
-        unit = clear_number(ent.text)
-        perform_nel_unit_long(unit)
+def filter_property(found_elements, found_elements_labels):
+    # Remove property if more then one unit is found
+    filtered_elements = []
+    filtered_elements_labels = []
+    for i in range(len(found_elements)):
+        element = found_elements[i]
+        element_label = found_elements_labels[i]
+        
+        if element_label != "OBSERVABLE_PROP":
+            filtered_elements.append(element)
+            filtered_elements_labels.append(element_label)
+    
+    return filtered_elements, filtered_elements_labels
 
-    elif ent.label_ == "OBSERVABLE_PROP":
-        unit = clear_number(ent.text)
-        perform_nel_property(unit)
+def inference(sentence):
+    doc = nlp(sentence)
+    found_elements = []
+    found_elements_labels = []
+    for ent in doc.ents:
+        print("Working on:", ent, "with label", ent.label_)
+        result = None
+        if ent.label_ == "UNIT_SHORT":
+            unit = clear_number(ent.text)
+            result = perform_nel_unit_short(unit)
+
+        elif ent.label_ == "UNIT_LONG":
+            unit = clear_number(ent.text)
+            result = perform_nel_unit_long(unit.lower())
+
+        elif ent.label_ == "OBSERVABLE_PROP":
+            prop = clear_number(ent.text)
+            result = perform_nel_property(prop.lower())
+        
+        if result != None:
+            found_elements.append(result)
+            found_elements_labels.append(ent.label_)
+            
+    # Filter percent if more than one unit is found
+    if len(found_elements) != 1:
+        found_elements, found_elements_labels = filter_percent(found_elements, found_elements_labels)
+
+    # Filter unit detected from OBSERVABLE PROPERTY if more than on unit is found
+    if len(found_elements) != 1:
+        found_elements, found_elements_labels = filter_property(found_elements, found_elements_labels)
+                
+    # Check if still more than unit is found
+    if len(found_elements) != 1:
+        print("Error: more than one unit found")
+    else:
+        # Print result data:
+        for i in range(len(found_elements)):
+            element = found_elements[i]
+            element_label = found_elements_labels[i]
+            print(i, element, "LABEL", element_label)
+
+        
+test_sentence = "Frequency in kHz and %"
+
+inference(test_sentence)
