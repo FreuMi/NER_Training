@@ -8,13 +8,13 @@ wikidata_base = "https://www.wikidata.org/wiki/"
 qudt_base = "https://qudt.org/vocab/unit/"
 nel_base = [
     # Frequency
-    {"short_unit": "Hz", "long_unit": ["hertz"], "qudt_id": "HZ",
+    {"short_unit": "hz", "long_unit": ["hertz"], "qudt_id": "HZ",
         "observerd_property": ["frequency"], "wikidata_id": "Q11652"},
-    {"short_unit": "kHz", "long_unit": ["kilohertz"], "qudt_id": "KiloHZ",
+    {"short_unit": "khz", "long_unit": ["kilohertz"], "qudt_id": "KiloHZ",
         "observerd_property": ["frequency"], "wikidata_id": "Q11652"},
-    {"short_unit": "MHz", "long_unit": ["megahertz"], "qudt_id": "MegaHZ",
+    {"short_unit": "mhz", "long_unit": ["megahertz"], "qudt_id": "MegaHZ",
         "observerd_property": ["frequency"], "wikidata_id": "Q11652"},
-    {"short_unit": "GHz", "long_unit": ["gigahertz"], "qudt_id": "GigaHZ",
+    {"short_unit": "ghz", "long_unit": ["gigahertz"], "qudt_id": "GigaHZ",
         "observerd_property": ["frequency"], "wikidata_id": "Q11652"},
     # Time
     {"short_unit": "s", "long_unit": ["second", "seconds"], "qudt_id": "SEC",
@@ -37,7 +37,7 @@ nel_base = [
         "observerd_property": ["temperature", "temperatures", "temp", "temps"], "wikidata_id": "Q11466"},
     # Percent
     {"short_unit": "%", "long_unit": ["percent"], "qudt_id": "PERCENT",
-        "observerd_property": [], "wikidata_id": ""},
+        "observerd_property": [], "wikidata_id": "Q2499617"},
     # Distance
     {"short_unit": "m", "long_unit": ["meter", "meters"], "qudt_id": "M",
         "observerd_property": ["distance", "length"], "wikidata_id": "Q126017"},
@@ -49,35 +49,39 @@ nel_base = [
         "observerd_property": ["distance", "length"], "wikidata_id": "Q126017"},
     {"short_unit": "nm", "long_unit": ["nanometer", "nanometers"], "qudt_id": "NanoM",
         "observerd_property": ["distance", "length"], "wikidata_id": "Q126017"},
+    # Acceleration
+    {"short_unit": "g", "long_unit": ["g-force"], "qudt_id": "G",
+        "observerd_property": ["acceleration", "accelerationx", "accelerationy", "accelerationz"], "wikidata_id": "Q11376"},
+    {"short_unit": "Gs", "long_unit": ["g-force"], "qudt_id": "G",
+        "observerd_property": ["acceleration", "accelerationx", "accelerationy", "accelerationz"], "wikidata_id": "Q11376"},
+    # Humidity
+    {"short_unit": "%", "long_unit": ["percent"], "qudt_id": "PERCENT",
+        "observerd_property": ["humidity", "humid"], "wikidata_id": "Q2499617"},
 ]
 
 
 def perform_nel_unit_short(item):
     for nel_arr in nel_base:
-        if nel_arr["short_unit"] == item:
-
-            return nel_arr
+            if  nel_arr["short_unit"] == item:
+                return nel_arr
 
 
 def perform_nel_unit_long(item):
     for nel_arr in nel_base:
-        if nel_arr["long_unit"] == item:
+        # Iterate over units
+        for unit in nel_arr["long_unit"]:
+            if unit == item:
 
-            return nel_arr
+                return nel_arr
 
 
 def perform_nel_property(item):
     # Assumes base unit, works if base unit is first entry in nel_base
     for nel_arr in nel_base:
-        properties = nel_arr["observerd_property"]
+        properties = nel_arr["observerd_property"] 
         for prop in properties:
-            if prop == item:
+            if prop.lower() == item or prop.lower() in item:
                 return nel_arr
-
-def remove_trailing_s(item):
-    # Remove trailing s
-    pattern = r'(?<!^.)s$'
-    return re.sub(pattern, '', item)
 
 def clear_number(item):
     # Remove number and whitespace
@@ -115,15 +119,16 @@ def filter_property(found_elements, found_elements_labels):
     return filtered_elements, filtered_elements_labels
 
 def inference(sentence):
+    sentence = sentence.lower()
     doc = nlp(sentence)
     found_elements = []
     found_elements_labels = []
     for ent in doc.ents:
-        #print("Working on:", ent, "with label", ent.label_)
+        print("Working on:", ent, "with label", ent.label_)
         result = None
         if ent.label_ == "UNIT_SHORT":
             unit = clear_number(ent.text)
-            result = perform_nel_unit_short(unit)
+            result = perform_nel_unit_short(unit.lower())
 
         elif ent.label_ == "UNIT_LONG":
             unit = clear_number(ent.text)
@@ -151,10 +156,11 @@ def inference(sentence):
         for i in range(len(found_elements)):
             element = found_elements[i]
             element_label = found_elements_labels[i]
-            print(element, "with label", elment_label)
+            print(element, "with label", element_label)
         return None
+    
     # Check if nothing is found
-    elif len(found_elements) == 0:
+    elif len(found_elements) == 0:      
         return None
     else:
         # return result data:

@@ -55,7 +55,7 @@ def get_spacy_doc(data):
     
   if cnt != 0:
     print("Errors preparing data:", cnt)
-  return db
+  return db, cnt
 
 
 # Load data
@@ -67,13 +67,20 @@ training_data = prepare_data.prepare_data("./training_data/")
 #data_dict["annotations"] = training_data
 
 # Split data
-train, test = train_test_split(training_data, test_size=0.15)
+random_seed = 42
+train, test = train_test_split(training_data, test_size=0.15, random_state=random_seed)
 
-db = get_spacy_doc(train)
+db, error_cnt = get_spacy_doc(train)
 db.to_disk("./train.spacy")
-print("Saved training data to train.spacy")
+if error_cnt == 0:
+  print("Successfully saved training data to train.spacy")
+else:
+  print("Finished generating training data with errors.")
 
 
-db = get_spacy_doc(test)
+db, error_cnt = get_spacy_doc(test)
 db.to_disk("./test.spacy")
-print("Saved test data to test.spacy")
+if error_cnt == 0:
+  print("Successfully saved test data to test.spacy")
+else:
+  print("Finished generating test data with errors.")

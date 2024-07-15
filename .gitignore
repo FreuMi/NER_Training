@@ -2,3 +2,5 @@
 /venv/
 /output/
 /__pycache__/
+./test.spacy
+./train.spacy

@@ -1,19 +1,19 @@
 The smart thermostat adjusts the room temperature to 22°C.;22°C;temperature
 The IoT-enabled weather station records an outdoor temperature of 15°C.;15°C;temperature
 The WoT-connected oven preheats to 180°C.;180°C
-The smart fridge maintains an internal Temperature of 4°C.;4°C;Temperature
+The smart fridge maintains an internal temperature of 4°C.;4°C;temperature
 The IoT-enabled greenhouse monitors plant growth at 25°C.;25°C
 The smart air conditioner cools the room to 18°C.;18°C
 The IoT-enabled water heater sets the shower temperature to 40°C.;40°C;temperature
 The smart thermostat adjusts the bedroom temperature to 20°C.;20°C;temperature
 The WoT-connected freezer keeps the temperature at -18°C.;-18°C;temperature
 The smart home assistant reports a current temperature of 22°C.;22°C;temperature
-The IoT-enabled baby monitor tracks nursery Temperature at 22°C.;22°C;Temperature
+The IoT-enabled baby monitor tracks nursery temperature at 22°C.;22°C;temperature
 The smart coffee maker heats water to 90°C for brewing.;90°C
 A IoT-enabled HVAC system regulates office temperature at 21°C.;21°C;temperature
 The smart thermostat lowers the temperature to 19°C at night.;19°C;temperature
 The IoT-enabled thermostat maintains a constant temperature of 23°C.;23°C;temperature
-The smart thermometer reads a body Temperature of 36.5°C.;36.5°C;Temperature
+The smart thermometer reads a body temperature of 36.5°C.;36.5°C;temperature
 The IoT-enabled smart home system detects a temperature drop to 16°C.;16°C;temperature
 The WoT-connected incubator keeps the eggs at 37°C.;37°C
 The smart thermostat boosts the temperature to 24°C during the day.;24°C;temperature
@@ -30,7 +30,7 @@ The smart oven alerts when the internal temperature reaches 200°C.;200°C;tempe
 The IoT-enabled thermostat decreases the temperature to 18°C before sleep.;18°C;temperature
 The smart shower system preheats water to a comfortable temperature of 38°C.;38°C;temperature
 The IoT-enabled brewing system keeps fermentation temperature at 20°C.;20°C;temperature
-The smart refrigerator adjusts its Temperature to 5°C.;5°C;Temperature
+The smart refrigerator adjusts its temperature to 5°C.;5°C;temperature
 The IoT-enabled heating pad sets to a maximum temperature of 45°C.;45°C;temperature
 The smart thermostat records the outside temperature as 12°C.;12°C;temperature
 The IoT-enabled smart fan operates best at temperatures below 30°C.;30°C;temperatures
@@ -43,10 +43,10 @@ The IoT-enabled weather station tracks a winter temperature of -5°C.;-5°C;temp
 The smart home system adjusts the room temperature to 21°C for comfort.;21°C;temperature
 The IoT-enabled oven can reach a high temperature of 250°C.;250°C;temperature
 The smart hot tub keeps the water temperature at 39°C.;39°C;temperature
-An IoT-enabled thermostat raises the Temperature to 22°C in the morning.;22°C;Temperature
+An IoT-enabled thermostat raises the temperature to 22°C in the morning.;22°C;temperature
 The smart thermostat logs an indoor temperature of 20°C.;20°C;temperature
 The IoT-enabled heater maintains the greenhouse temperature at 28°C.;28°C;temperature
-The smart pet bed warms to a cozy Temperature of 30°C.;30°C;Temperature
+The smart pet bed warms to a cozy temperature of 30°C.;30°C;temperature
 The IoT-enabled thermostat cools the office to a comfortable 23°C.;23°C
 The smart shower adjusts the water temperature to 37.5°C based on user preference.;37.5°C;temperature
 The IoT-enabled thermostat sets the fireplace temperature to 24°C for a cozy evening.;24°C;temperature
@@ -55,7 +55,7 @@ The WoT-connected smart mattress adjusts its surface temperature to 28°C for im
 An IoT-enabled home brewing kit maintains a yeast-friendly temperature of 22°C.;22°C;temperature
 A smart toothbrush sanitizing station uses UV light at 40°C.;40°C
 The IoT-enabled smart kettle heats water to a precise 92°C for perfect tea.;92°C
-The smart sous-vide cooker holds a steady water Temperature of 56°C.;56°C;Temperature
+The smart sous-vide cooker holds a steady water temperature of 56°C.;56°C;temperature
 The IoT-enabled terrarium heater ensures the reptile habitat stays at 29°C.;29°C
 The smart home energy system reduces heating costs by maintaining 20°C.;20°C
 The IoT-enabled fish tank chiller keeps tropical fish comfortable at 24°C.;24°C
@@ -67,17 +67,17 @@ The smart pet feeder monitors ambient temperature at 22°C to keep food fresh.;2
 The IoT-enabled weather balloon logs high-altitude temperatures of -50°C.;-50°C;temperatures
 The smart HVAC system adjusts to 21°C for optimal energy efficiency.;21°C
 The IoT-enabled egg incubator keeps eggs at a consistent 37.5°C.;37.5°C
-The smart home brewing machine maintains wort Temperature at 65°C.;65°C;Temperature
+The smart home brewing machine maintains wort temperature at 65°C.;65°C;temperature
 The IoT-enabled solar panel system optimizes efficiency at 25°C.;25°C
 The smart baby monitor tracks nursery temperature, keeping it at 20°C.;20°C;temperature
 The IoT-connected greenhouse fan turns on when temperature exceeds 30°C.;30°C;temperature
-The smart electric blanket warms to a user-set Temperature of 35°C.;35°C;Temperature
+The smart electric blanket warms to a user-set temperature of 35°C.;35°C;temperature
 The IoT-enabled aquarium heater maintains coral reef tank at 26°C.;26°C
 The smart thermostat drops the home temperature to 18°C during the night.;18°C;temperature
-The IoT-enabled fermentation chamber holds a constant Temperature of 25°C.;25°C;Temperature
+The IoT-enabled fermentation chamber holds a constant temperature of 25°C.;25°C;temperature
 The smart heating mat for pets keeps the surface at 38°C.;38°C
 The IoT-enabled garage heater maintains a temperature of 15°C during winter.;15°C;temperature
-The smart kitchen hood adjusts to kitchen Temperatures above 35°C.;35°C;Temperatures
+The smart kitchen hood adjusts to kitchen temperatures above 35°C.;35°C;temperatures
 The IoT-connected weather vane logs outdoor temperatures of -10°C in winter.;-10°C;temperatures
 The smart thermostat warms the bathroom floor to 23°C.;23°C
 The IoT-enabled beehive heater ensures bees stay warm at 35°C.;35°C
@@ -140,11 +140,11 @@ The smart heating blanket warms up to a temp of 37°C.;37°C;temp
 A IoT-enabled thermostat logs a minimum temp of 10°C.;10°C;temp
 The smart baby bottle warmer heats milk to 37°C.;37°C
 The IoT-enabled weather station tracks a winter temp of -5°C.;-5°C;temp
-The smart home system adjusts the room Temp to 21°C for comfort.;21°C;Temp
-The IoT-enabled oven can reach a high Temp of 250°C.;250°C;Temp
-The smart hot tub keeps the water Temp at 39°C.;39°C;Temp
-An IoT-enabled thermostat raises the Temp to 22°C in the morning.;22°C;Temp
-The smart thermostat logs an indoor Temp of 20°C.;20°C;Temp
+The smart home system adjusts the room temp to 21°C for comfort.;21°C;temp
+The IoT-enabled oven can reach a high temp of 250°C.;250°C;temp
+The smart hot tub keeps the water temp at 39°C.;39°C;temp
+An IoT-enabled thermostat raises the temp to 22°C in the morning.;22°C;temp
+The smart thermostat logs an indoor temp of 20°C.;20°C;temp
 The IoT-enabled heater maintains the greenhouse temp at 28°C.;28°C;temp
 The smart pet bed warms to a cozy temp of 30°C.;30°C;temp
 The IoT-enabled thermostat cools the office to a comfortable 23°C.;23°C
@@ -177,11 +177,11 @@ The smart thermostat drops the home temp to 18°C during the night.;18°C;temp
 The IoT-enabled fermentation chamber holds a constant temp of 25°C.;25°C;temp
 The smart heating mat for pets keeps the surface at 38°C.;38°C
 The IoT-enabled garage heater maintains a temp of 15°C during winter.;15°C;temp
-The smart kitchen hood adjusts to kitchen Temps above 35°C.;35°C;Temps
-The IoT-connected weather vane logs outdoor Temps of -10°C in winter.;-10°C;Temps
+The smart kitchen hood adjusts to kitchen temps above 35°C.;35°C;temps
+The IoT-connected weather vane logs outdoor temps of -10°C in winter.;-10°C;temps
 The smart thermostat warms the bathroom floor to 23°C.;23°C
 The IoT-enabled beehive heater ensures bees stay warm at 35°C.;35°C
-The smart freezer alarm sounds when internal Temp rises above -15°C.;-15°C;Temp
+The smart freezer alarm sounds when internal temp rises above -15°C.;-15°C;temp
 The IoT-connected weather station logs a summer high of 42°C.;42°C
 The smart incubator maintains a hatching temp of 38°C.;38°C;temp
 The IoT-enabled smart toaster heats bread to 180°C for perfect toast.;180°C
@@ -346,7 +346,7 @@ The smart hot tub keeps the water temperature at 39 degree Celsius.;39 degree Ce
 An IoT-enabled thermostat raises the temperature to 22 degree Celsius in the morning.;22 degree Celsius;temperature
 The smart thermostat logs an indoor temperature of 20 degree Celsius.;20 degree Celsius;temperature
 The IoT-enabled heater maintains the greenhouse temperature at 28 degree Celsius.;28 degree Celsius;temperature
-The smart pet bed warms to a cozy Temperature of 30 degree Celsius.;30 degree Celsius;Temperature
+The smart pet bed warms to a cozy temperature of 30 degree Celsius.;30 degree Celsius;temperature
 The IoT-enabled thermostat cools the office to a comfortable 23 degree Celsius.;23 degree Celsius
 The smart shower adjusts the water temperature to 37.5 degree Celsius based on user preference.;37.5 degree Celsius;temperature
 The IoT-enabled thermostat sets the fireplace temperature to 24 degree Celsius for a cozy evening.;24 degree Celsius;temperature
@@ -373,8 +373,8 @@ The smart baby monitor tracks nursery temperature, keeping it at 20 degree Celsi
 The IoT-connected greenhouse fan turns on when temperature exceeds 30 degree Celsius.;30 degree Celsius;temperature
 The smart electric blanket warms to a user-set temperature of 35 degree Celsius.;35 degree Celsius;temperature
 The IoT-enabled aquarium heater maintains coral reef tank at 26 degree Celsius.;26 degree Celsius
-The smart thermostat drops the home Temperature to 18 degree Celsius during the night.;18 degree Celsius;Temperature
-The IoT-enabled fermentation chamber holds a constant Temperature of 25 degree Celsius.;25 degree Celsius;Temperature
+The smart thermostat drops the home temperature to 18 degree Celsius during the night.;18 degree Celsius;temperature
+The IoT-enabled fermentation chamber holds a constant temperature of 25 degree Celsius.;25 degree Celsius;temperature
 The smart heating mat for pets keeps the surface at 38 degree Celsius.;38 degree Celsius
 The IoT-enabled garage heater maintains a temperature of 15 degree Celsius during winter.;15 degree Celsius;temperature
 The smart kitchen hood adjusts to kitchen temperatures above 35 degree Celsius.;35 degree Celsius;temperatures
@@ -383,22 +383,26 @@ The smart thermostat warms the bathroom floor to 23 degree Celsius.;23 degree Ce
 The IoT-enabled beehive heater ensures bees stay warm at 35 degree Celsius.;35 degree Celsius
 The smart freezer alarm sounds when internal temperature rises above -15 degree Celsius.;-15 degree Celsius;temperature
 The IoT-connected weather station logs a summer high of 42 degree Celsius.;42 degree Celsius
-The smart incubator maintains a hatching Temperature of 38 degree Celsius.;38 degree Celsius;Temperature
+The smart incubator maintains a hatching temperature of 38 degree Celsius.;38 degree Celsius;temperature
 The IoT-enabled smart toaster heats bread to 180 degree Celsius for perfect toast.;180 degree Celsius
 The smart water bottle keeps beverages at 20 degree Celsius for hydration on the go.;20 degree Celsius
-The IoT-connected smart mirror defogs itself when bathroom Temperature exceeds 25 degree Celsius.;25 degree Celsius;Temperature
+The IoT-connected smart mirror defogs itself when bathroom temperature exceeds 25 degree Celsius.;25 degree Celsius;temperature
 The smart home security system activates cooling at 28 degree Celsius.;28 degree Celsius
 The IoT-enabled refrigerator alerts when temperature goes above 8 degree Celsius.;8 degree Celsius;temperature
 The smart greenhouse misting system activates at 30 degree Celsius to cool plants.;30 degree Celsius
-The IoT-connected barbecue smoker maintains meat smoking Temperature at 110 degree Celsius.;110 degree Celsius;Temperature
+The IoT-connected barbecue smoker maintains meat smoking temperature at 110 degree Celsius.;110 degree Celsius;temperature
 The smart baby warmer keeps the infant's bed at 37 degree Celsius.;37 degree Celsius
-The IoT-enabled fireplace adjusts to maintain room Temperature at 22 degree Celsius.;22 degree Celsius;Temperature
+The IoT-enabled fireplace adjusts to maintain room temperature at 22 degree Celsius.;22 degree Celsius;temperature
 The smart heated towel rack reaches 50 degree Celsius for warm towels.;50 degree Celsius
 The IoT-connected weather app notifies users of a heatwave at 35 degree Celsius.;35 degree Celsius
 The smart HVAC system pre-cools the house to 21 degree Celsius before arrival.;21 degree Celsius
 The IoT-enabled wine cooler sets temperature to 16 degree Celsius for red wines.;16 degree Celsius;temperature
 The smart sous-vide machine holds precise temperature at 60 degree Celsius for cooking.;60 degree Celsius;temperature
+Our IoT sensor measures the temperature;temperature
+The WoT sensor has a property called temperature;temperature
+The WoT sensor has a readproperty called temperature;temperature
+The WoT sensor has a writeproperty called temperature;temperature
+The WoT sensor has a action called temperature;temperature
+The WoT sensor has an event called temperature;temperature
 temp;temp
-Temp;Temp
 temperature;temperature
-Temperature;Temperature
