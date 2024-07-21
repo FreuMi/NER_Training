@@ -3,7 +3,6 @@ import re
 
 nlp = spacy.load("./output/model-best")
 
-
 wikidata_base = "https://www.wikidata.org/wiki/"
 qudt_base = "https://qudt.org/vocab/unit/"
 nel_base = [
@@ -33,7 +32,7 @@ nel_base = [
     {"short_unit": "t", "long_unit": ["ton", "tons"], "qudt_id": "TON_Metric",
         "observerd_property": ["mass", "weight", "weights", "weighs"], "wikidata_id": "Q11423"},
     # Temperature
-    {"short_unit": "°C", "long_unit": ["celsius", "degree celsius"], "qudt_id": "DEG_C",
+    {"short_unit": "°C", "long_unit": ["celsius", "degree celsius", "degrees celsius"], "qudt_id": "DEG_C",
         "observerd_property": ["temperature", "temperatures", "temp", "temps"], "wikidata_id": "Q11466"},
     # Percent
     {"short_unit": "%", "long_unit": ["percent"], "qudt_id": "PERCENT",
@@ -61,18 +60,23 @@ nel_base = [
 
 
 def perform_nel_unit_short(item):
-    for nel_arr in nel_base:
-            if  nel_arr["short_unit"] == item:
-                return nel_arr
+    if len(item) > 3:
+        return perform_nel_unit_long(item)
+    else:
+        for nel_arr in nel_base:
+                if  nel_arr["short_unit"] == item:
+                    return nel_arr
 
 
-def perform_nel_unit_long(item):
-    for nel_arr in nel_base:
-        # Iterate over units
-        for unit in nel_arr["long_unit"]:
-            if unit == item:
-
-                return nel_arr
+def perform_nel_unit_long(input_item):
+    item_split_arr = input_item.split(" ")
+    
+    for item in item_split_arr:   
+        for nel_arr in nel_base:
+            # Iterate over units
+            for unit in nel_arr["long_unit"]:
+                if unit == item:
+                    return nel_arr
 
 
 def perform_nel_property(item):
@@ -84,10 +88,30 @@ def perform_nel_property(item):
                 return nel_arr
 
 def clear_number(item):
-    # Remove number and whitespace
-    pattern = r'[0-9\s\[\]\(\)\{\}]'
+    # Define patterns for numbers, whitespace, +, and - at the beginning and end
+    pattern = r'^[0-9\s\[\]\(\)\{\}\+\-]+|[0-9\s\[\]\(\)\{\}\+\-]+$'
+    # Use re.sub to replace the matched patterns with an empty string
     return re.sub(pattern, '', item)
 
+def clear_brackets(input_string):
+    brackets = "[](){}"
+    for bracket in brackets:
+        input_string = input_string.replace(bracket, "")
+    return input_string
+
+def remove_duplicates(found_elements, list_label):
+    seen = set()
+    filtered_elements = []
+    filtered_elements_labels = []
+    for i in range(len(found_elements)):
+        item_qudt = found_elements[i]["qudt_id"]
+        item = found_elements[i]
+        label = list_label[i]
+        if item_qudt not in seen:
+            filtered_elements.append(item)
+            filtered_elements_labels.append(label)
+            seen.add(item_qudt)
+    return filtered_elements, filtered_elements_labels
 
 def filter_percent(found_elements, found_elements_labels):
     # Remove % if more then one unit is found
@@ -118,30 +142,36 @@ def filter_property(found_elements, found_elements_labels):
     
     return filtered_elements, filtered_elements_labels
 
-def inference(sentence):
+def inference(sentence, mode="full"):
     sentence = sentence.lower()
     doc = nlp(sentence)
     found_elements = []
     found_elements_labels = []
     for ent in doc.ents:
-        print("Working on:", ent, "with label", ent.label_)
+        print("Working on:", "|", ent, "|", "with label", ent.label_)
         result = None
         if ent.label_ == "UNIT_SHORT":
             unit = clear_number(ent.text)
+            unit = clear_brackets(unit)
             result = perform_nel_unit_short(unit.lower())
 
         elif ent.label_ == "UNIT_LONG":
             unit = clear_number(ent.text)
+            unit = clear_brackets(unit)           
             result = perform_nel_unit_long(unit.lower())
 
         elif ent.label_ == "OBSERVABLE_PROP":
-            prop = clear_number(ent.text)
-            result = perform_nel_property(prop.lower())
+            if mode == "full":
+                prop = clear_number(ent.text)
+                prop = clear_brackets(prop)               
+                result = perform_nel_property(prop.lower())
         
         if result != None:
             found_elements.append(result)
             found_elements_labels.append(ent.label_)
-            
+         
+    
+    found_elements, found_elements_labels = remove_duplicates(found_elements, found_elements_labels )
     # Filter percent if more than one unit is found
     if len(found_elements) > 1:
         found_elements, found_elements_labels = filter_percent(found_elements, found_elements_labels)
